@@ -1,0 +1,176 @@
+
+VBNET 5/16/06
+
+PULL DOWN MENUS
+
+
+Private Sub MenuItem6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnubackcolor.Click
+        ColorDialog1.ShowDialog()
+        Label1.BackColor = ColorDialog1.Color
+
+    End Sub
+
+    Private Sub MenuItem7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuforecolor.Click
+        ColorDialog1.ShowDialog()
+        Label1.ForeColor() = ColorDialog1.Color
+    End Sub
+
+    Private Sub MenuItem8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnufont.Click
+        FontDialog1.ShowDialog()
+        Label1.Font = FontDialog1.Font
+    End Sub
+
+    Private Sub MenuItem2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuopen.Click
+        OpenFileDialog1.Filter = "Images (*.ico)|*.ico|(*.jpg)|*.jpg"
+        If OpenFileDialog1.ShowDialog = DialogResult.OK Then PictureBox1.Image = Image.FromFile(OpenFileDialog1.FileName)
+
+
+    End Sub
+End Class
+
+AltF- default shortcut for main menu
+TIMES AND DATES CODES
+
+
+    Private Sub MenuItem10_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem10.Click
+        Label1.Text = Format(Now, "MMMM dd, yyyy dddd")
+    End Sub
+
+    Private Sub MenuItem11_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem11.Click
+        Timer1.Enabled = True
+
+
+    End Sub
+
+    Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
+        Label1.Text = Format(Now, "hh:mmmm:ss")
+    End Sub
+End Class
+
+
+
+
+LUCKY SEVEN WITH TIMER
+
+  Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnspin.Click
+
+        Timer1.Enabled = True
+
+    End Sub
+
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnexit.Click
+        End
+    End Sub
+
+    Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
+        PictureBox1.Visible = False
+
+        Label1.Text = CStr(Int(Rnd() * 10))
+        Label2.Text = CStr(Int(Rnd() * 10))
+        Label3.Text = CStr(Int(Rnd() * 10))
+
+        If Label1.Text = "7" Or Label2.Text = "7" Or Label3.Text = "7" Then PictureBox1.Visible = True
+    End Sub
+
+    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnstop.Click
+        Timer1.Enabled = False
+    End Sub
+End Class
+
+
+
+NUMBER COMPARISON
+
+ 
+
+    Private Sub TextBox2_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox2.TextChanged
+        If Val(TextBox1.Text) < Val(TextBox2.Text) Then lblresult1.Text = "True" Else lblresult1.Text = "False"
+        If Val(TextBox1.Text) > Val(TextBox2.Text) Then lblresult2.Text = "True" Else lblresult2.Text = "False"
+        If Val(TextBox1.Text) <= Val(TextBox2.Text) Then lblresult3.Text = "True" Else lblresult3.Text = "False"
+        If Val(TextBox1.Text) >= Val(TextBox2.Text) Then lblresult4.Text = "True" Else lblresult4.Text = "False"
+        If Val(TextBox1.Text) <> Val(TextBox2.Text) Then lblresult5.Text = "True" Else lblresult5.Text = "False"
+        If Val(TextBox1.Text) = Val(TextBox2.Text) Then lblresult6.Text = "True" Else lblresult6.Text = "False"
+
+
+    End Sub
+End Class
+
+alternate solution:
+
+	lblresult1.Text = Val(TextBox1.Text) > Val(TextBox2.Text)
+        lblresult2.Text = Val(TextBox1.Text) < Val(TextBox2.Text)
+        lblresult3.Text = Val(TextBox1.Text) <= Val(TextBox2.Text)
+        lblresult4.Text = Val(TextBox1.Text) >= Val(TextBox2.Text)
+        lblresult5.Text = Val(TextBox1.Text) <> Val(TextBox2.Text)
+        lblresult6.Text = Val(TextBox1.Text) = Val(TextBox2.Text)
+
+
+
+
+GUESSING GAME
+
+Public Class Form1
+
+
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        a = 15
+
+        If a > Val(TextBox2.Text) Then
+            Label4.Text = "Higher Please"
+
+        ElseIf a < Val(TextBox2.Text) Then
+            Label4.Text = "Lower Please"
+
+        Else
+
+            Label4.Text = "You are correct"
+
+        End If
+
+
+
+LOGIN
+
+Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnlogin.Click
+        Dim username As Char
+        Dim password As Char
+        Static Dim n As Integer
+
+
+
+
+
+        If txtusername.Text = "username" And txtpassword.Text = "password" Then
+            MsgBox("Welcome to the System", MsgBoxStyle.OKOnly)
+
+
+        Else
+
+            MsgBox("Login Failed")
+            txtusername.Clear()
+            txtpassword.Clear()
+            txtusername.Focus()
+
+
+            n = n + 1
+
+            	If n = 3 Then
+                	txtusername.Enabled = False
+                	txtpassword.Enabled = False
+                	btnlogin.Enabled = False
+        	End If
+
+
+        End If
+
+
+
+
+    End Sub
+
+
+
+    End Sub
+End Class
+
+*REMEMBER TO TERMINATE IF THEN ELSE STATEMENTS with "END IF". If not all if then else statements are terminated "logon failed" will appear after pressing OK button on "Welcome to the System" popup message.
